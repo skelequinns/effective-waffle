@@ -33,9 +33,13 @@ position: 'ADJACENT'
 config_schema:
   type: object
   properties:
-    health:
+    affectionValue:
       type: integer
-      default: 100
+      default: 0
+      minimum: 0
+      maximum: 250
+      title: "Set Affection"
+      description: "Set affection to a specific value (0-250). Changes take effect immediately."
 
 # The schema of the state that you store.
 # This isn't needed even if you do store state,
