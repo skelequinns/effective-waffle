@@ -2,13 +2,13 @@
 #   in which case these values can be managed in the UI.
 
 # The name of the stage.
-# project_name: "Stage Template"
+project_name: "Slow Burn for Character Bots - UI Enabled"
 
 # A short tagline to show in search.
-# tagline: "A base template for all stages."
+tagline: "The same slow burn app as the other one, but this one shows progress in the UI."
 
 # 'PUBLIC', 'PRIVATE', or 'UNLISTED'.
-# visibility: 'PUBLIC'
+visibility: 'UNLISTED'
 
 # 'ADJACENT' | 'NONE' | 'COVER' | 'FULLSCREEN'
 # 'ADJACENT' is default. The frame will display on the side of the
@@ -18,7 +18,7 @@
 #   but leave the text input box.
 # 'FULLSCREEN' will make nothing below the header bar
 #   show except for your stage.
-# position: 'ADJACENT'
+position: 'ADJACENT'
 
 # Self-explanatory.
 # tags:
