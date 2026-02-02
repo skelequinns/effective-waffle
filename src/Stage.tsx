@@ -5,7 +5,9 @@ import { keywordAnalyzer } from "./KeywordAnalyzer";
 import { relationshipManager, RelationshipStage } from "./RelationshipManager";
 import { MessageStateType, ChatStateType, SentimentAnalysisEntry, createDefaultMessageState, createDefaultChatState } from "./types";
 
-type ConfigType = any;
+type ConfigType = {
+  affectionValue?: number;
+};
 type InitStateType = any;
 
 export class Stage extends StageBase<InitStateType, ChatStateType, MessageStateType, ConfigType> {
@@ -20,6 +22,7 @@ export class Stage extends StageBase<InitStateType, ChatStateType, MessageStateT
       chatState,
       characters,
       users,
+      config,
     } = data;
 
     console.debug(`[Stage] Initializing with ${Object.keys(characters).length} character(s) and ${Object.keys(users).length} user(s)`);
@@ -27,6 +30,13 @@ export class Stage extends StageBase<InitStateType, ChatStateType, MessageStateT
     // Initialize message state: use provided state or create default
     this.currentMessageState = messageState ?? createDefaultMessageState();
     this.currentChatState = chatState ?? createDefaultChatState();
+
+    if (config?.affectionValue !== undefined) {
+      console.debug(`[Stage] Applying config affectionValue: ${config.affectionValue}`);
+      this.currentMessageState.affection = config.affectionValue;
+      this.currentMessageState.relationshipStage = relationshipManager.getStageForAffection(config.affectionValue);
+      this.currentMessageState.stageDirections = relationshipManager.getStageDirectionsForAffection(config.affectionValue);
+    }
 
     console.debug(`[Stage] Starting affection: ${this.currentMessageState.affection}`);
   }
